@@ -4,9 +4,9 @@ import com.zhku.mh.util.ListNode;
 import com.zhku.mh.util.TreeNode;
 import sun.reflect.generics.tree.Tree;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Stack;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.*;
 
 /**
  * @ClassName:NiukeProgram
@@ -142,4 +142,44 @@ public class NiukeProgram {
             return stack2.pop();
         }
     }
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+        char[] ctr = buf.readLine().toCharArray();
+        Arrays.sort(ctr);
+        ArrayList<Character> result = new ArrayList<Character>();
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        for (int i = 0; i < ctr.length; i++) {
+            if (map.isEmpty()) {
+                result.add(ctr[i]);
+                map.put(ctr[i], 1);
+            } else {
+                if (map.containsKey(ctr[i])) {
+                    map.put(ctr[i], map.get(ctr[i]) + 1);
+                } else {
+                    result.add(ctr[i]);
+                    map.put(ctr[i], 1);
+                }
+            }
+//            if(i == ctr.length-2) break;
+//            if(ctr[i] == ctr[i+1]){
+//               i++;
+//               count++;
+//            }else{
+//                map.put(ctr[i],count);
+//                count = 0;
+//            }
+        }
+//        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+//            String key = entry.getKey().toString();
+//            String value = entry.getValue().toString();
+//            System.out.print(key + value);
+//        }
+        for(int i = 0;i < result.size();i++){
+            String key = result.get(i).toString();
+            String value = map.get(result.get(i)).toString();
+            System.out.print(key + value);
+        }
+    }
+
 }
