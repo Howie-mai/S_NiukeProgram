@@ -4,7 +4,10 @@ import com.zhku.mh.util.TreeNode;
 import org.junit.Test;
 import sun.reflect.generics.tree.Tree;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -81,5 +84,12 @@ public class ProgramTest {
                     break;
             }
         }
+    }
+
+    @Test
+    public void test(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
+        String cacheKey = sdf.format(new Date());
+        System.out.println(cacheKey);
     }
 }
